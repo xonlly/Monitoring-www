@@ -16,5 +16,11 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "react": "~0.14.7",
+    "socket.io-client": "~1.4.5",
+    "bootstrap": "~3.3.6",
+    "bootstrap-material-design": "~0.5.8"
+  }
 }

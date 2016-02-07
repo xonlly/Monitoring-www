@@ -4,14 +4,26 @@
     <meta charset="utf-8">
     <title>Monitoring</title>
     <!--link rel="stylesheet" href="../shared/css/base.css" /-->
-    <script src="components/react/react.js"></script>
-    <script src="components/react/react-dom.js"></script>
-    <script src="components/react/react-with-addons.js"></script>
+    <script src="components/socket.io-client/socket.io.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="components/bootstrap-material-design/dist/css/bootstrap-material-design.css">
+    <link rel="stylesheet" type="text/css" href="components/bootstrap-material-design/dist/css/ripples.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/bootstrap-material-design/dist/js/material.js"></script>
+    <script src="components/bootstrap-material-design/dist/js/ripples.js"></script>
   </head>
   <body>
 
-    <div id="monitoring"></div>
 
+    <div id="monitoring"></div>
     <script src="js/bundle.js"></script>
+    <script>
+    $(function () {
+      $.material.init()
+    })
+    </script>
   </body>
 </html>

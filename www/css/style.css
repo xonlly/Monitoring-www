@@ -1,0 +1,8 @@
+.navbar.navbar-monitoring {
+  background-color: rgb(224, 224, 224);
+  color: rgb(0, 0, 0);
+}
+
+.form-group label.control-label {
+  color: #3E3E3E;
+}
