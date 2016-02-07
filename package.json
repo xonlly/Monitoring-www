@@ -1,0 +1,35 @@
+{
+  "name": "monitoringwww",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack-dev": "webpack --watch --progress -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xonlly/Monitoring-www.git"
+  },
+  "author": "xonlly <contact@devteck.eu>",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.3.26",
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13"
+  },
+  "bugs": {
+    "url": "https://github.com/xonlly/Monitoring-www/issues"
+  },
+  "homepage": "https://github.com/xonlly/Monitoring-www#readme"
+}

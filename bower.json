@@ -1,0 +1,20 @@
+{
+  "name": "monitoringwww",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "xonlly <contact@devteck.eu>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/xonlly/Monitoring-www",
+  "moduleType": [
+    "es6"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
