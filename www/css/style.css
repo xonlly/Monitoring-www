@@ -6,3 +6,26 @@
 .form-group label.control-label {
   color: #3E3E3E;
 }
+
+
+.navbar .navbar-form .form-group .form-control, .navbar .navbar-form .form-control {
+  margin-top: 28px;
+
+}
+
+.form-group.label-static label.control-label, .form-group.label-floating.is-focused label.control-label, .form-group.label-floating:not(.is-empty) label.control-label {
+  top: -8px;
+
+}
+
+.navbar-form .radio, .navbar-form .checkbox {
+  margin-right: 10px;
+}
+
+.material-block {
+  margin: 4%;
+  width: 92%;
+
+  background: rgba(224, 224, 224, 0.75);
+  min-height: 400px;
+}

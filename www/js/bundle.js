@@ -20160,9 +20160,13 @@
 	
 	var _login = __webpack_require__(/*! ./elements/login.jsx */ 160);
 	
+	var _server = __webpack_require__(/*! ./elements/server.jsx */ 211);
+	
 	var _react = __webpack_require__(/*! react */ 147);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _dispatcher = __webpack_require__(/*! ./core/dispatcher */ 209);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -20178,12 +20182,31 @@
 	  function Interface() {
 	    _classCallCheck(this, Interface);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Interface).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Interface).apply(this, arguments));
+	
+	    _this.state = {
+	      servers: {}
+	    };
+	
+	    (0, _dispatcher.listenner)('ask-socketUpdate', function (data) {
+	      _this.setState({
+	        servers: data.servers
+	      });
+	    });
+	
+	    (0, _dispatcher.listenner)('ask-socketDisconnect', function () {
+	      _this.setState({
+	        servers: {}
+	      });
+	    });
+	    return _this;
 	  }
 	
 	  _createClass(Interface, [{
 	    key: 'render',
 	    value: function render() {
+	      var servers = this.state.servers;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -20191,7 +20214,9 @@
 	        _react2.default.createElement(
 	          'div',
 	          null,
-	          'Hello World'
+	          Object.keys(servers).map(function (k, i) {
+	            return _react2.default.createElement(_server.Server, { key: servers[k].id, server: servers[k] });
+	          })
 	        )
 	      );
 	    }
@@ -28145,7 +28170,7 @@
 	var dispatch = exports.dispatch = function dispatch(type) {
 	  var data = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
 	
-	  console.log('dispatch', type, data);
+	  console.log('dispatch', type);
 	  for (var i = 0; i < (window.listen[type] || []).length; i++) {
 	    window.listen[type][i](data);
 	  }
@@ -28240,6 +28265,65 @@
 	
 	  return Socket;
 	}();
+
+/***/ },
+/* 211 */
+/*!*********************************!*\
+  !*** ./src/elements/server.jsx ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Server = undefined;
+	
+	var _react = __webpack_require__(/*! react */ 147);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _dispatcher = __webpack_require__(/*! ../core/dispatcher */ 209);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Server = exports.Server = function (_React$Component) {
+	  _inherits(Server, _React$Component);
+	
+	  function Server() {
+	    _classCallCheck(this, Server);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Server).apply(this, arguments));
+	  }
+	
+	  _createClass(Server, [{
+	    key: 'render',
+	    value: function render() {
+	      var server = this.props.server;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-md-3' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'material-block' },
+	          server.os.name
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Server;
+	}(_react2.default.Component);
 
 /***/ }
 /******/ ]);
