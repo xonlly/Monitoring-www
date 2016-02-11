@@ -94,7 +94,7 @@ export class Login extends React.Component {
                     <label><input type="checkbox" value="l" />  </label>
                 </div>
               <button type="submit" disabled={this.state.connected} className="btn btn-raised btn-info">Submit</button>
-              <button type="submit" disabled={!this.state.connected} onClick={this.disconnect.bind(this)} className="btn btn-raised btn-info">Disconnect</button>
+              <button type="submit" disabled={!this.state.connected} onClick={this.disconnect.bind(this)} className="btn btn-raised btn-danger">Disconnect</button>
             </div>
           </form>
         </div>

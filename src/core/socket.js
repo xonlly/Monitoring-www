@@ -41,8 +41,13 @@ export class Socket {
     window.socket.disconnect()
   }
 
+  deleteServer(name) {
+    socket.emit('delete', name)
+  }
+
   listen() {
       listenner('ask-connect', this.connect)
       listenner('ask-disconnect', this.disconnect)
+      listenner('ask-socketDelete', this.deleteServer)
   }
 }

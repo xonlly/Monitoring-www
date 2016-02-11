@@ -29,3 +29,11 @@
   background: rgba(224, 224, 224, 0.75);
   min-height: 400px;
 }
+
+.circles-text {
+  font-size: 25px !important;
+}
+
+.circles-text-ram {
+  font-size: 15px !important;
+}
