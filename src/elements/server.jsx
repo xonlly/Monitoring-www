@@ -61,7 +61,7 @@ export class Server extends Component {
       text:                function(value){return value + '%';},
       colors:              ['#cbacf9', '#6a12ed'],
       duration:            1000,
-      wrpClass:            'circles-wrp',
+      wrpClass:            'circle-ram',
       textClass:           'circles-text-ram',
       valueStrokeClass:    'circles-valueStroke',
       maxValueStrokeClass: 'circles-maxValueStroke',

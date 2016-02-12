@@ -37,3 +37,12 @@
 .circles-text-ram {
   font-size: 15px !important;
 }
+
+.circle {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.circle-ram {
+    margin-left: -16px;
+}
