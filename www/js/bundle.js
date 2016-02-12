@@ -20395,8 +20395,8 @@
 	              ),
 	              _react2.default.createElement(
 	                'button',
-	                { type: 'submit', disabled: this.state.connected, className: 'btn btn-raised btn-info' },
-	                'Submit'
+	                { type: 'submit', disabled: this.state.connected, className: 'btn btn-raised btn-success' },
+	                'Connect'
 	              ),
 	              _react2.default.createElement(
 	                'button',
