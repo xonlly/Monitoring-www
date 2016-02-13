@@ -70,16 +70,35 @@ export class Server extends Component {
     });
   }
 
-  circles(id) {
+  infos(id) {
     let id_cpu = id+'_cpu'
     let id_ram = id+'_ram'
+
+    let {server} = this.props;
+    let {os} = server;
 
     return (
       <div>
         <div className="circle" id={id_cpu}></div>
         <div className="circle" id={id_ram}></div>
+        <div style={ { display : 'inline-block', verticalAlign : 'top' }}>
+            Average:
+            { os.loadavg[0] } 1m<br />
+            { os.loadavg[0] } 5m<br />
+            { os.loadavg[0] } 15m<br />
+
+            HomeDir: { os.homedir }<br />
+            Network Interfaces: - { Object.keys(os.networkInterfaces).join('-') }<br />
+
+            Arch: { os.arch }<br />
+            Platform:  { os.platform }<br />
+            Release:  { os.release }<br />
+
+
+        </div>
       </div>
     )
+    //  UpTime: { toHHMMSS(os.uptime) }
   }
 
   render() {
@@ -108,7 +127,7 @@ export class Server extends Component {
             <h3 className="panel-title">{ server.os.name }</h3>
           </div>
           <div className="panel-body">
-            { !server.online ? <AlertOffline /> : this.circles(id) }
+            { !server.online ? <AlertOffline /> : this.infos(id) }
 
           </div>
           <div className="panel-footer">

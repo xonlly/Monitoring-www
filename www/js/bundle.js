@@ -20576,17 +20576,50 @@
 	      });
 	    }
 	  }, {
-	    key: 'circles',
-	    value: function circles(id) {
+	    key: 'infos',
+	    value: function infos(id) {
 	      var id_cpu = id + '_cpu';
 	      var id_ram = id + '_ram';
+	
+	      var server = this.props.server;
+	      var os = server.os;
 	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement('div', { className: 'circle', id: id_cpu }),
-	        _react2.default.createElement('div', { className: 'circle', id: id_ram })
+	        _react2.default.createElement('div', { className: 'circle', id: id_ram }),
+	        _react2.default.createElement(
+	          'div',
+	          { style: { display: 'inline-block', verticalAlign: 'top' } },
+	          'Average:',
+	          os.loadavg[0],
+	          ' 1m',
+	          _react2.default.createElement('br', null),
+	          os.loadavg[0],
+	          ' 5m',
+	          _react2.default.createElement('br', null),
+	          os.loadavg[0],
+	          ' 15m',
+	          _react2.default.createElement('br', null),
+	          'HomeDir: ',
+	          os.homedir,
+	          _react2.default.createElement('br', null),
+	          'Network Interfaces: - ',
+	          Object.keys(os.networkInterfaces).join('-'),
+	          _react2.default.createElement('br', null),
+	          'Arch: ',
+	          os.arch,
+	          _react2.default.createElement('br', null),
+	          'Platform:  ',
+	          os.platform,
+	          _react2.default.createElement('br', null),
+	          'Release:  ',
+	          os.release,
+	          _react2.default.createElement('br', null)
+	        )
 	      );
+	      //  UpTime: { toHHMMSS(os.uptime) }
 	    }
 	  }, {
 	    key: 'render',
@@ -20623,7 +20656,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'panel-body' },
-	            !server.online ? _react2.default.createElement(AlertOffline, null) : this.circles(id)
+	            !server.online ? _react2.default.createElement(AlertOffline, null) : this.infos(id)
 	          ),
 	          _react2.default.createElement(
 	            'div',
