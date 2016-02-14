@@ -20764,30 +20764,6 @@
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'row-action-primary' },
-	                  _react2.default.createElement('i', { className: 'glyphicon glyphicon-leaf' })
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'row-content' },
-	                  _react2.default.createElement('div', { className: 'least-content' }),
-	                  _react2.default.createElement(
-	                    'h4',
-	                    { className: 'list-group-item-heading' },
-	                    'Architecture'
-	                  ),
-	                  _react2.default.createElement(
-	                    'p',
-	                    { className: 'list-group-item-text' },
-	                    os.arch
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'list-group-item' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'row-action-primary' },
 	                  _react2.default.createElement('i', { className: 'glyphicon glyphicon-hdd' })
 	                ),
 	                _react2.default.createElement(
@@ -20802,7 +20778,9 @@
 	                  _react2.default.createElement(
 	                    'p',
 	                    { className: 'list-group-item-text' },
-	                    os.platform
+	                    os.platform,
+	                    ' ',
+	                    os.arch
 	                  )
 	                )
 	              ),

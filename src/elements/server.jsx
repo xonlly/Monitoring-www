@@ -146,17 +146,7 @@ export class Server extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="list-group-item">
-                    <div className="row-action-primary">
-                      <i className="glyphicon glyphicon-leaf"></i>
-                    </div>
-                    <div className="row-content">
-                      <div className="least-content"></div>
-                      <h4 className="list-group-item-heading">Architecture</h4>
-
-                      <p className="list-group-item-text">{ os.arch }</p>
-                    </div>
-                  </div>
+                  
 
                   <div className="list-group-item">
                     <div className="row-action-primary">
@@ -166,7 +156,7 @@ export class Server extends Component {
                       <div className="least-content"></div>
                       <h4 className="list-group-item-heading">Platform</h4>
 
-                      <p className="list-group-item-text">{ os.platform }</p>
+                      <p className="list-group-item-text">{ os.platform } { os.arch }</p>
                     </div>
                   </div>
                   <div className="list-group-item">
