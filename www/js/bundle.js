@@ -20349,50 +20349,44 @@
 	            { className: 'navbar-form row', role: 'search', onSubmit: this.handleSubmit.bind(this) },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'form-group col-md-3 label-floating ' },
-	              _react2.default.createElement(
-	                'label',
-	                { htmlFor: 'form-ip', className: 'control-label' },
-	                'IP'
-	              ),
-	              _react2.default.createElement('input', { type: 'text', name: 'ip', defaultValue: this.state.ip, onChange: this.changeIp.bind(this), className: 'form-control', id: 'form-ip' }),
-	              _react2.default.createElement('span', { className: 'material-input' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'form-group col-md-3 label-floating ' },
-	              _react2.default.createElement(
-	                'label',
-	                { htmlFor: 'form-port', className: 'control-label' },
-	                'Port'
-	              ),
-	              _react2.default.createElement('input', { type: 'number', name: 'port', defaultValue: this.state.port, onChange: this.changePort.bind(this), className: 'form-control', id: 'form-port' }),
-	              _react2.default.createElement('span', { className: 'material-input' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'form-group col-md-3 label-floating ' },
-	              _react2.default.createElement(
-	                'label',
-	                { htmlFor: 'form-apiKey', className: 'control-label' },
-	                'API Key'
-	              ),
-	              _react2.default.createElement('input', { type: 'text', name: 'apikey', defaultValue: this.state.apikey, onChange: this.changeApi.bind(this), className: 'form-control', id: 'form-apiKey' }),
-	              _react2.default.createElement('span', { className: 'material-input' })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-md-3' },
+	              { className: 'col-md-8 inputs-login', style: { marginTop: '18px' } },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'checkbox' },
+	                { className: 'form-group col-md-4 label-floating ' },
 	                _react2.default.createElement(
 	                  'label',
-	                  null,
-	                  _react2.default.createElement('input', { type: 'checkbox', value: 'l' }),
-	                  '  '
-	                )
+	                  { htmlFor: 'form-ip', className: 'control-label' },
+	                  'IP'
+	                ),
+	                _react2.default.createElement('input', { type: 'text', name: 'ip', defaultValue: this.state.ip, onChange: this.changeIp.bind(this), className: 'form-control', id: 'form-ip' }),
+	                _react2.default.createElement('span', { className: 'material-input' })
 	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form-group col-md-4 label-floating ' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'form-port', className: 'control-label' },
+	                  'Port'
+	                ),
+	                _react2.default.createElement('input', { type: 'number', name: 'port', defaultValue: this.state.port, onChange: this.changePort.bind(this), className: 'form-control', id: 'form-port' }),
+	                _react2.default.createElement('span', { className: 'material-input' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form-group col-md-4 label-floating ' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'form-apiKey', className: 'control-label' },
+	                  'API Key'
+	                ),
+	                _react2.default.createElement('input', { type: 'text', name: 'apikey', defaultValue: this.state.apikey, onChange: this.changeApi.bind(this), className: 'form-control', id: 'form-apiKey' }),
+	                _react2.default.createElement('span', { className: 'material-input' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-md-4' },
 	              _react2.default.createElement(
 	                'button',
 	                { type: 'submit', disabled: this.state.connected, className: 'btn btn-raised btn-success' },
@@ -20542,7 +20536,7 @@
 	        radius: 60,
 	        value: server.os.cpuAverage,
 	        maxValue: 100,
-	        width: 10,
+	        width: 15,
 	        text: function text(value) {
 	          return value + '%';
 	        },
@@ -20561,7 +20555,7 @@
 	        radius: 30,
 	        value: server.os.mempourcent.toFixed(0),
 	        maxValue: 100,
-	        width: 10,
+	        width: 7,
 	        text: function text(value) {
 	          return value + '%';
 	        },
@@ -20584,39 +20578,260 @@
 	      var server = this.props.server;
 	      var os = server.os;
 	
+	      var totalNetwork = { up: 0, down: 0 };
+	      if (os.traffic) {
+	        for (var i in os.traffic) {
+	          totalNetwork.up += os.traffic[i][0];
+	          totalNetwork.down += os.traffic[i][1];
+	        }
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('div', { className: 'circle', id: id_cpu }),
-	        _react2.default.createElement('div', { className: 'circle', id: id_ram }),
 	        _react2.default.createElement(
 	          'div',
-	          { style: { display: 'inline-block', verticalAlign: 'top' } },
-	          'Average:',
-	          os.loadavg[0],
-	          ' 1m',
-	          _react2.default.createElement('br', null),
-	          os.loadavg[0],
-	          ' 5m',
-	          _react2.default.createElement('br', null),
-	          os.loadavg[0],
-	          ' 15m',
-	          _react2.default.createElement('br', null),
-	          'HomeDir: ',
-	          os.homedir,
-	          _react2.default.createElement('br', null),
-	          'Network Interfaces: - ',
-	          Object.keys(os.networkInterfaces).join('-'),
-	          _react2.default.createElement('br', null),
-	          'Arch: ',
-	          os.arch,
-	          _react2.default.createElement('br', null),
-	          'Platform:  ',
-	          os.platform,
-	          _react2.default.createElement('br', null),
-	          'Release:  ',
-	          os.release,
-	          _react2.default.createElement('br', null)
+	          { className: 'monitoring-left' },
+	          _react2.default.createElement('div', { className: 'circle', id: id_cpu }),
+	          _react2.default.createElement('div', { className: 'circle', id: id_ram }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'average' },
+	            _react2.default.createElement(
+	              'table',
+	              { className: 'table table-striped table-bordered' },
+	              _react2.default.createElement(
+	                'thead',
+	                null,
+	                _react2.default.createElement(
+	                  'tr',
+	                  null,
+	                  _react2.default.createElement(
+	                    'td',
+	                    { colSpan: '2' },
+	                    'Average'
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'tbody',
+	                null,
+	                _react2.default.createElement(
+	                  'tr',
+	                  null,
+	                  _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    os.loadavg[0]
+	                  ),
+	                  _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    ' 1m'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'tr',
+	                  null,
+	                  _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    os.loadavg[1]
+	                  ),
+	                  _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    ' 5m'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'tr',
+	                  null,
+	                  _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    os.loadavg[2]
+	                  ),
+	                  _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    ' 15m'
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'monitoring-right' },
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'list-group' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list-group-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-action-primary' },
+	                  _react2.default.createElement('i', { className: 'glyphicon glyphicon-folder-open' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-content' },
+	                  _react2.default.createElement('div', { className: 'least-content' }),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'list-group-item-heading' },
+	                    'Home directory'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'list-group-item-text' },
+	                    os.homedir
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list-group-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-action-primary' },
+	                  _react2.default.createElement('i', { className: 'glyphicon glyphicon-transfer' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-content' },
+	                  _react2.default.createElement('div', { className: 'least-content' }),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'list-group-item-heading' },
+	                    'Network Interfaces'
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'list-group-item-text' },
+	                    _react2.default.createElement(
+	                      'div',
+	                      { style: { float: 'left' } },
+	                      Object.keys(os.networkInterfaces).map(function (key, index) {
+	                        return _react2.default.createElement(
+	                          'div',
+	                          { key: index },
+	                          '- ',
+	                          key
+	                        );
+	                      })
+	                    ),
+	                    _react2.default.createElement(
+	                      'div',
+	                      { style: { float: 'right' } },
+	                      _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                          'span',
+	                          { className: 'label label-success' },
+	                          _react2.default.createElement('i', { className: 'glyphicon glyphicon-arrow-up' }),
+	                          ' ',
+	                          totalNetwork.up,
+	                          ' kb/s'
+	                        )
+	                      ),
+	                      _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                          'span',
+	                          { className: 'label label-primary' },
+	                          _react2.default.createElement('i', { className: 'glyphicon glyphicon-arrow-down' }),
+	                          ' ',
+	                          totalNetwork.down,
+	                          ' kb/s'
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list-group-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-action-primary' },
+	                  _react2.default.createElement('i', { className: 'glyphicon glyphicon-leaf' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-content' },
+	                  _react2.default.createElement('div', { className: 'least-content' }),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'list-group-item-heading' },
+	                    'Architecture'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'list-group-item-text' },
+	                    os.arch
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list-group-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-action-primary' },
+	                  _react2.default.createElement('i', { className: 'glyphicon glyphicon-hdd' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-content' },
+	                  _react2.default.createElement('div', { className: 'least-content' }),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'list-group-item-heading' },
+	                    'Platform'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'list-group-item-text' },
+	                    os.platform
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list-group-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-action-primary' },
+	                  _react2.default.createElement('i', { className: 'glyphicon glyphicon-tag' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row-content' },
+	                  _react2.default.createElement('div', { className: 'least-content' }),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'list-group-item-heading' },
+	                    'Release'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'list-group-item-text' },
+	                    os.release
+	                  )
+	                )
+	              )
+	            )
+	          )
 	        )
 	      );
 	      //  UpTime: { toHHMMSS(os.uptime) }
@@ -20640,7 +20855,7 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-md-3' },
+	        { className: 'col-md-4' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: classHeader },

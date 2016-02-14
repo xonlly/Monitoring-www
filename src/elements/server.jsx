@@ -40,7 +40,7 @@ export class Server extends Component {
       radius:              60,
       value:               server.os.cpuAverage,
       maxValue:            100,
-      width:               10,
+      width:               15,
       text:                function(value){return value + '%';},
       colors:              ['#9fe2fb', '#00baff'],
       duration:            400,
@@ -57,7 +57,7 @@ export class Server extends Component {
       radius:              30,
       value:               server.os.mempourcent.toFixed(0),
       maxValue:            100,
-      width:               10,
+      width:               7,
       text:                function(value){return value + '%';},
       colors:              ['#cbacf9', '#6a12ed'],
       duration:            1000,
@@ -77,25 +77,117 @@ export class Server extends Component {
     let {server} = this.props;
     let {os} = server;
 
+
+    let totalNetwork = { up : 0, down : 0 }
+    if (os.traffic) {
+        for (var i in os.traffic) {
+            totalNetwork.up += os.traffic[i][0];
+            totalNetwork.down += os.traffic[i][1];
+        }
+    }
+
     return (
       <div>
-        <div className="circle" id={id_cpu}></div>
-        <div className="circle" id={id_ram}></div>
-        <div style={ { display : 'inline-block', verticalAlign : 'top' }}>
-            Average:
-            { os.loadavg[0] } 1m<br />
-            { os.loadavg[0] } 5m<br />
-            { os.loadavg[0] } 15m<br />
+        <div className="monitoring-left">
+            <div className="circle" id={id_cpu}></div>
+            <div className="circle" id={id_ram}></div>
 
-            HomeDir: { os.homedir }<br />
-            Network Interfaces: - { Object.keys(os.networkInterfaces).join('-') }<br />
-
-            Arch: { os.arch }<br />
-            Platform:  { os.platform }<br />
-            Release:  { os.release }<br />
-
-
+            <div className="average">
+                <table className="table table-striped table-bordered">
+                    <thead>
+                        <tr><td colSpan="2">Average</td></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>{ os.loadavg[0] }</td><td> 1m</td></tr>
+                        <tr><td>{ os.loadavg[1] }</td><td> 5m</td></tr>
+                        <tr><td>{ os.loadavg[2] }</td><td> 15m</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+        <div className="monitoring-right">
+            <div>
+
+
+                <div className="list-group">
+                  <div className="list-group-item">
+                    <div className="row-action-primary">
+                      <i className="glyphicon glyphicon-folder-open"></i>
+                    </div>
+                    <div className="row-content">
+                      <div className="least-content"></div>
+                      <h4 className="list-group-item-heading">Home directory</h4>
+                      <p className="list-group-item-text">{ os.homedir }</p>
+                    </div>
+                  </div>
+
+                  <div className="list-group-item">
+                    <div className="row-action-primary">
+                      <i className="glyphicon glyphicon-transfer"></i>
+                    </div>
+                    <div className="row-content">
+                      <div className="least-content"></div>
+                      <h4 className="list-group-item-heading">Network Interfaces</h4>
+
+                      <div className="list-group-item-text">
+                          <div style={{ float: 'left' }}>
+                              { Object.keys(os.networkInterfaces).map((key, index) => {
+                                  return (
+                                      <div key={index}>- {key}</div>
+                                  )
+                              }) }
+                          </div>
+
+                          <div style={{ float: 'right' }}>
+                              <div><span className="label label-success"><i className="glyphicon glyphicon-arrow-up"></i> {totalNetwork.up} kb/s</span></div>
+                              <div><span className="label label-primary"><i className="glyphicon glyphicon-arrow-down"></i> {totalNetwork.down} kb/s</span></div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="list-group-item">
+                    <div className="row-action-primary">
+                      <i className="glyphicon glyphicon-leaf"></i>
+                    </div>
+                    <div className="row-content">
+                      <div className="least-content"></div>
+                      <h4 className="list-group-item-heading">Architecture</h4>
+
+                      <p className="list-group-item-text">{ os.arch }</p>
+                    </div>
+                  </div>
+
+                  <div className="list-group-item">
+                    <div className="row-action-primary">
+                      <i className="glyphicon glyphicon-hdd"></i>
+                    </div>
+                    <div className="row-content">
+                      <div className="least-content"></div>
+                      <h4 className="list-group-item-heading">Platform</h4>
+
+                      <p className="list-group-item-text">{ os.platform }</p>
+                    </div>
+                  </div>
+                  <div className="list-group-item">
+                    <div className="row-action-primary">
+                      <i className="glyphicon glyphicon-tag"></i>
+                    </div>
+                    <div className="row-content">
+                      <div className="least-content"></div>
+                      <h4 className="list-group-item-heading">Release</h4>
+
+                      <p className="list-group-item-text">{ os.release }</p>
+                    </div>
+                  </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
       </div>
     )
     //  UpTime: { toHHMMSS(os.uptime) }
@@ -121,7 +213,7 @@ export class Server extends Component {
 
 
     return (
-      <div className="col-md-3">
+      <div className="col-md-4">
         <div className={classHeader}>
           <div className="panel-heading">
             <h3 className="panel-title">{ server.os.name }</h3>

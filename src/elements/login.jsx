@@ -74,27 +74,25 @@ export class Login extends React.Component {
         <div className="container-fluid">
           <form className="navbar-form row" role="search" onSubmit={this.handleSubmit.bind(this)}>
 
-              <div className="form-group col-md-3 label-floating ">
-                <label htmlFor="form-ip" className="control-label">IP</label>
-                <input type="text" name="ip" defaultValue={this.state.ip} onChange={this.changeIp.bind(this)} className="form-control" id="form-ip" />
-              <span className="material-input"></span></div>
+              <div className="col-md-8 inputs-login" style={{ marginTop : '18px' }}>
+                  <div className="form-group col-md-4 label-floating ">
+                    <label htmlFor="form-ip" className="control-label">IP</label>
+                    <input type="text" name="ip" defaultValue={this.state.ip} onChange={this.changeIp.bind(this)} className="form-control" id="form-ip" />
+                  <span className="material-input"></span></div>
 
-              <div className="form-group col-md-3 label-floating ">
-                <label htmlFor="form-port" className="control-label">Port</label>
-                <input type="number" name="port" defaultValue={this.state.port} onChange={this.changePort.bind(this)} className="form-control" id="form-port" />
-              <span className="material-input"></span></div>
+                  <div className="form-group col-md-4 label-floating ">
+                    <label htmlFor="form-port" className="control-label">Port</label>
+                    <input type="number" name="port" defaultValue={this.state.port} onChange={this.changePort.bind(this)} className="form-control" id="form-port" />
+                  <span className="material-input"></span></div>
 
-            <div className="form-group col-md-3 label-floating ">
-                <label htmlFor="form-apiKey" className="control-label">API Key</label>
-                <input type="text"  name="apikey" defaultValue={this.state.apikey} onChange={this.changeApi.bind(this)} className="form-control" id="form-apiKey" />
-              <span className="material-input"></span></div>
-
-            <div className="col-md-3">
-              <div className="checkbox">
-                    <label><input type="checkbox" value="l" />  </label>
-                </div>
-              <button type="submit" disabled={this.state.connected} className="btn btn-raised btn-success">Connect</button>
-              <button type="submit" disabled={!this.state.connected} onClick={this.disconnect.bind(this)} className="btn btn-raised btn-danger">Disconnect</button>
+                <div className="form-group col-md-4 label-floating ">
+                    <label htmlFor="form-apiKey" className="control-label">API Key</label>
+                    <input type="text"  name="apikey" defaultValue={this.state.apikey} onChange={this.changeApi.bind(this)} className="form-control" id="form-apiKey" />
+                  <span className="material-input"></span></div>
+            </div>
+            <div className="col-md-4">
+                <button type="submit" disabled={this.state.connected} className="btn btn-raised btn-success">Connect</button>
+                <button type="submit" disabled={!this.state.connected} onClick={this.disconnect.bind(this)} className="btn btn-raised btn-danger">Disconnect</button>
             </div>
           </form>
         </div>

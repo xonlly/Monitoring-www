@@ -9,14 +9,10 @@
 
 
 .navbar .navbar-form .form-group .form-control, .navbar .navbar-form .form-control {
-  margin-top: 28px;
 
 }
 
-.form-group.label-static label.control-label, .form-group.label-floating.is-focused label.control-label, .form-group.label-floating:not(.is-empty) label.control-label {
-  top: -8px;
 
-}
 
 .navbar-form .radio, .navbar-form .checkbox {
   margin-right: 10px;
@@ -45,4 +41,40 @@
 
 .circle-ram {
     margin-left: -16px;
+}
+
+.average {
+    margin-top: 20px;
+}
+
+.list-group .list-group-item .row-picture, .list-group .list-group-item .row-action-primary  {
+    vertical-align: top;
+}
+
+.monitoring-left {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    min-width: 200px;
+}
+
+.monitoring-right {
+    display: inline-block;
+    vertical-align: top;
+    width: 60%;
+    min-width: 300px;
+}
+
+@media screen and (max-width: 780px) {
+    .monitoring-left {
+        width: 100%;
+    }
+
+    .monitoring-right {
+        width: 100%;
+    }
+
+    .inputs-login .form-group {
+        height: 60px;
+    }
 }
