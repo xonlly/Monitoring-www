@@ -1,9 +1,13 @@
-# Work in progress
+# Monitoring-easy web interface
 
-# Install
+## /!\ Work in progress /!\
 
-run `npm install`
+![Monitoring](readme/monitoringv2.gif)
 
-build `webpack`
+# Development
+
+To prepare `npm install`
+
+Unique build `webpack`
 
 build dev (live reload) `npm run webpack-dev`

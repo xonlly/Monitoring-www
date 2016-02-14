@@ -146,7 +146,7 @@ export class Server extends Component {
                       </div>
                     </div>
                   </div>
-                  
+
 
                   <div className="list-group-item">
                     <div className="row-action-primary">
@@ -213,7 +213,7 @@ export class Server extends Component {
 
           </div>
           <div className="panel-footer">
-            <input type="button" className="btn btn-raised btn-danger" value="remove" onClick={this.removeServer.bind(this)} />
+            {  !server.online ? <input type="button" className="btn btn-raised btn-danger" value="Clean" onClick={this.removeServer.bind(this)} /> : null }
           </div>
         </div>
 

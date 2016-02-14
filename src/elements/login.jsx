@@ -90,7 +90,7 @@ export class Login extends React.Component {
                     <input type="text"  name="apikey" defaultValue={this.state.apikey} onChange={this.changeApi.bind(this)} className="form-control" id="form-apiKey" />
                   <span className="material-input"></span></div>
             </div>
-            <div className="col-md-4">
+            <div style={{ textAlign: 'right' }} className="col-md-4">
                 <button type="submit" disabled={this.state.connected} className="btn btn-raised btn-success">Connect</button>
                 <button type="submit" disabled={!this.state.connected} onClick={this.disconnect.bind(this)} className="btn btn-raised btn-danger">Disconnect</button>
             </div>

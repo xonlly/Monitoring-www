@@ -20386,7 +20386,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-md-4' },
+	              { style: { textAlign: 'right' }, className: 'col-md-4' },
 	              _react2.default.createElement(
 	                'button',
 	                { type: 'submit', disabled: this.state.connected, className: 'btn btn-raised btn-success' },
@@ -20854,7 +20854,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'panel-footer' },
-	            _react2.default.createElement('input', { type: 'button', className: 'btn btn-raised btn-danger', value: 'remove', onClick: this.removeServer.bind(this) })
+	            !server.online ? _react2.default.createElement('input', { type: 'button', className: 'btn btn-raised btn-danger', value: 'Clean', onClick: this.removeServer.bind(this) }) : null
 	          )
 	        )
 	      );
