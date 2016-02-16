@@ -1,0 +1,64 @@
+
+<html>
+    <head>
+
+        <style>
+            .container-traffic {
+                display: flex;
+                width: 100%;
+                align-items: flex-end;
+                height: 15px;
+
+            }
+
+            .container-traffic div {
+                margin-right: 1px;
+                width:1px; height: 0px
+            }
+
+.container-traffic div {
+                transition: all 0.3s;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div class="container-traffic">
+            <div ></div>
+
+        </div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            $ = function (dom) { return document.querySelector(dom) }
+            console.log($(".container-traffic div").innerHTML)
+
+            setInterval(() => {
+                var queue = document.getElementsByClassName('container-traffic');
+                var list;
+                if (list = document.querySelectorAll(".container-traffic div").length > 10) {
+                    document.querySelectorAll(".container-traffic div")[0].style.width = '0px'
+                    document.querySelectorAll(".container-traffic div")[0].style.marginRight = '0px'
+                    setTimeout(function () {
+                        document.querySelectorAll(".container-traffic div")[0].remove()
+                    }, 325);
+                }
+
+                var pourcent = Math.floor((Math.random() * 100) + 1)
+                var color = pourcent > 75 ? 'red' : (pourcent > 45 ? 'orange' : 'green')
+                var elem = document.createElement("div");
+                elem.style.cssText = 'background: '+color
+
+                var test = $(".container-traffic").appendChild(elem)
+                setTimeout(function () {
+                    test.style.height = pourcent+'%'
+                }, 10);
+
+
+            }, 350)
+        });
+        </script>
+
+    </body>
+</html>
