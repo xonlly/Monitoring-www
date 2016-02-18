@@ -65,6 +65,11 @@
     min-width: 300px;
 }
 
+
+.graph-elem {
+    transition: all 1.5s;
+}
+
 @media screen and (max-width: 780px) {
     .monitoring-left {
         width: 100%;

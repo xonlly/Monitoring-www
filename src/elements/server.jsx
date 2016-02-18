@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {dispatch, listenner} from '../core/dispatcher'
 
+import {Graph} from './graph.jsx'
+
 class AlertOffline extends Component {
 
   render() {
@@ -174,9 +176,9 @@ export class Server extends Component {
                 </div>
 
 
-
             </div>
         </div>
+        <Graph height="100px" listener={ server.os.cpuAverage } />
 
       </div>
     )
